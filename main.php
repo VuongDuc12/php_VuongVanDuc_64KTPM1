@@ -124,7 +124,7 @@ $list_table = $_SESSION['records'];
         <div class="modal-content">
             <form action="process.php" method="post">
                 <input type="hidden" name="action" value="delete">
-                <input type="hidden" name="id" id="delete-id"> <!-- Nhận giá trị ID từ JavaScript -->
+                <input type="hidden" name="id" id="delete-id"> 
                 <div class="modal-header">
                     <h4 class="modal-title">Xóa sản phẩm</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -147,7 +147,7 @@ $list_table = $_SESSION['records'];
         <div class="modal-content">
             <form action="process.php" method="post">
                 <input type="hidden" name="action" value="edit">
-                <input type="hidden" name="id" id="edit-id"> <!-- Nhận giá trị ID từ JavaScript -->
+                <input type="hidden" name="id" id="edit-id"> 
                 <div class="modal-header">
                     <h4 class="modal-title">Sửa sản phẩm</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
