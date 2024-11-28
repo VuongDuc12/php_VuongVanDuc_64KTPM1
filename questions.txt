@@ -1,0 +1,13 @@
+Ngôn ngữ lập trình nào phổ biến nhất hiện nay?
+A. Python
+B. Java
+C. C++
+D. JavaScript
+Answer: A
+
+Hệ điều hành nào phổ biến nhất hiện nay?
+A. Linux
+B. macOS
+C. Windows
+D. Android
+Answer: C
