@@ -50,25 +50,7 @@ if (!isset($_SESSION['records'])) {
     ];;
 }
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $name = trim($_POST['name'] ?? '');
-    $description = trim($_POST['description'] ?? '');
-    $image = trim($_POST['image'] ?? '');
 
-    // Thêm thông tin vào danh sách nếu tất cả các trường không rỗng
-    if ($name && $description && $image) {
-        $_SESSION['records'][] = [
-            'name' => $name,
-            'description' => $description,
-            'image' => $image,
-        ];
-    }
-
-    // Tránh gửi lại form khi tải lại trang
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit();
-}
 
 
 // Retrieve the list of products
@@ -167,38 +149,40 @@ $list_table = $_SESSION['records'];
     </div>
 </div>
 
-    <div id="editProduct" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="processAdmin.php" method="post">
-                    <input type="hidden" name="action" value="edit">
-                    <input type="hidden" name="id" id="edit-id">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Sửa sản phẩm</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+<div id="editProduct" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="processAdmin.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="action" value="edit">
+                <input type="hidden" name="id" id="edit-id">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sửa sản phẩm</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Tên sản phẩm</label>
+                        <input name="name" id="edit-name" type="text" class="form-control" required>
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Tên sản phẩm</label>
-                            <input name="name" id="edit-name" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Mô tả</label>
-                            <textarea name="description" id="edit-description" class="form-control" rows="3" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Đường dẫn hình ảnh</label>
-                            <input name="image" id="edit-image" type="text" class="form-control" required>
-                        </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea name="description" id="edit-description" class="form-control" rows="3" required></textarea>
                     </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Hủy">
-                        <input type="submit" class="btn btn-info" value="Lưu">
+                    <div class="form-group">
+                        <label>Upload hình ảnh</label>
+                        <input name="image" id="edit-image" type="file" class="form-control-file">
+                        <small class="text-muted">Giữ nguyên nếu không muốn thay đổi ảnh.</small>
                     </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                    <button type="submit" class="btn btn-info">Lưu</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
     <div id="deleteProduct" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -237,18 +221,23 @@ $list_table = $_SESSION['records'];
                                 $(this).find('#delete-id').val(id); // Điền ID vào input trong modal
                             });
 
-                            // Xử lý khi nhấn nút sửa
-                            $('#editProduct').on('show.bs.modal', function (event) {
-                                var button = $(event.relatedTarget); // Lấy nút gọi modal
-                                var id = button.data('id'); // Lấy ID từ nút bấm
-                                var name = button.data('name'); // Lấy tên sản phẩm từ nút bấm
-                                var price = button.data('price'); // Lấy giá sản phẩm từ nút bấm
+                            $(document).ready(function () {
+                        // Xử lý khi nhấn nút sửa
+                        $('#editProduct').on('show.bs.modal', function (event) {
+                            var button = $(event.relatedTarget); // Lấy nút gọi modal
+                            var id = button.data('id'); // Lấy ID
+                            var name = button.data('name'); // Lấy tên sản phẩm
+                            var description = button.data('description'); // Lấy mô tả
+                            var image = button.data('image'); // Lấy đường dẫn ảnh
 
-                                var modal = $(this);
-                                modal.find('#edit-id').val(id); // Điền ID vào input
-                                modal.find('#edit-name').val(name); // Điền tên vào input
-                                modal.find('#edit-price').val(price); // Điền giá vào input
-                            });
+                            var modal = $(this);
+                            modal.find('#edit-id').val(id); // Điền ID
+                            modal.find('#edit-name').val(name); // Điền tên
+                            modal.find('#edit-description').val(description); // Điền mô tả
+                            // Không cần set lại giá trị cho file upload
+                        });
+                    });
+
                         });
 
             </script>
