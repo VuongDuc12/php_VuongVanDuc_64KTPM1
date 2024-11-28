@@ -1,11 +1,12 @@
 <?php
-// Include dữ liệu từ modal.php
-$flowers = include './modal.php';
 
-// Kiểm tra dữ liệu
-if (!is_array($flowers)) {
-    echo "Error: Flowers data is not an array.";
-    $flowers = []; // Gán giá trị mặc định để tránh lỗi
+
+session_start();
+
+// Kiểm tra nếu session có dữ liệu 'records'
+if (!isset($_SESSION['records']) || !is_array($_SESSION['records'])) {
+    echo "Error: No flower data found in session.";
+    $_SESSION['records'] = []; // Gán giá trị mặc định nếu không có dữ liệu
 }
 ?>
 
@@ -103,7 +104,7 @@ if (!is_array($flowers)) {
     <div class="container mt-5">
         <h3 class="mb-4 text-success fs-4 border-bottom">Những loại hoa tuyệt đẹp 2024</h3>
         <div class="row">
-            <?php foreach ($flowers as $index => $flower): ?>
+        <?php foreach ($_SESSION['records'] as $index => $flower): ?>
                 <div class="col-md-4 d-flex align-items-stretch my-3">
                     <div class="card shadow-sm flower">
                         <img src="<?php echo $flower['image']; ?>" class="card-img-top" alt="<?php echo $flower['name']; ?>">
