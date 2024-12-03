@@ -1,18 +1,20 @@
 <?php
+// như này thì sẽ hơi chậm bởi vì phải truy xuất data thêm lần nữa, chúng ta có thể chuyền data từ trong home page sang để nhanh hơn
+
 // Include dữ liệu từ modal.php
-$flowers = include './modal.php';
+include '../model/data.php';
 
 // Lấy ID từ URL
 $id = isset($_GET['id']) ? (int)$_GET['id'] : -1;
 
 // Kiểm tra ID hợp lệ
-if ($id < 0 || $id >= count($flowers)) {
+if ($id < 0 || $id >= count($_SESSION['records'])) {
     echo "Invalid flower ID.";
     exit;
 }
 
 // Lấy thông tin chi tiết của hoa
-$flower = $flowers[$id];
+$flower = $_SESSION['records'][$id];
 ?>
 
 <!DOCTYPE html>

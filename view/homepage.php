@@ -2,7 +2,7 @@
 
 
 session_start();
-include './data.php';
+include '../model/data.php';
 // Kiểm tra nếu session có dữ liệu 'records'
 if (!isset($_SESSION['records']) || !is_array($_SESSION['records'])) {
     echo "Error: No flower data found in session.";
@@ -78,13 +78,13 @@ if (!isset($_SESSION['records']) || !is_array($_SESSION['records'])) {
         <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./assets/img/dayenthao.webp" class="d-block w-100 carousel-image" alt="Dạ yến thảo">
+                    <img src="../assets/img/dayenthao.webp" class="d-block w-100 carousel-image" alt="Dạ yến thảo">
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/img/HoaGiay.webp" class="d-block w-100 carousel-image" alt="Hoa giấy">
+                    <img src="../assets/img/HoaGiay.webp" class="d-block w-100 carousel-image" alt="Hoa giấy">
                 </div>
                 <div class="carousel-item">
-                    <img src="./assets/img/HoaHuynhAnh.webp" class="d-block w-100 carousel-image" alt="Hoa huỳnh anh">
+                    <img src="../assets/img/HoaHuynhAnh.webp" class="d-block w-100 carousel-image" alt="Hoa huỳnh anh">
                 </div>
             </div>
 
