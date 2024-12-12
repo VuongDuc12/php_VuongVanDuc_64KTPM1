@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Library;
+use App\Models\Book;
 use Illuminate\Http\Request;
 
 class Bai1Controller extends Controller
@@ -11,7 +12,20 @@ class Bai1Controller extends Controller
      */
     public function index()
     {
-        //
+       
+        return view('bai1.index');
+    }
+    public function books()
+    {
+       
+        $books = Book::all();
+        return view('bai1.books', compact( 'books'));
+    }
+    public function libraries()
+    {
+        $libraries = Library::all();
+        
+        return view('bai1.libraries', compact('libraries'));
     }
 
     /**
