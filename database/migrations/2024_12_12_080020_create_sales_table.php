@@ -9,15 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('sales', function (Blueprint $table) {
-            $table->id('sale_id'); // Mã giao dịch
-            $table->foreignId('medicine_id')->constrained('medicines')->onDelete('cascade'); // Khóa ngoại
-            $table->integer('quantity'); // Số lượng bán
-            $table->dateTime('sale_date'); // Ngày bán
-            $table->string('customer_phone', 10)->nullable(); // Số điện thoại người mua (tùy chọn)
-            $table->timestamps(); // created_at và updated_at
+            $table->id('sale_id'); 
+            $table->unsignedBigInteger('medicine_id'); 
+            $table->integer('quantity');
+            $table->dateTime('sale_date'); 
+            $table->string('customer_phone', 10)->nullable(); 
+            $table->timestamps();
+
+            // Khóa ngoại
+            $table->foreign('medicine_id')
+                  ->references('medicine_id')
+                  ->on('medicines')
+                  ->onDelete('cascade');
         });
     }
 
