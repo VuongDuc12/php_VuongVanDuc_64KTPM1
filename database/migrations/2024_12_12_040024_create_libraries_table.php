@@ -9,18 +9,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('libraries', function (Blueprint $table) {
-            $table->id(); // Primary key (id)
-            $table->string('name'); // Tên thư viện
-            $table->string('address'); // Địa chỉ thư viện
-            $table->string('contact_number'); // Số điện thoại liên hệ
-            $table->timestamps(); // created_at và updated_at
+            $table->id();
+            $table->string('name', 255);
+            $table -> string('address',255);
+            $table -> integer ('contact_number');
+            $table->timestamps();
         });
     }
-    
-
     /**
      * Reverse the migrations.
      */

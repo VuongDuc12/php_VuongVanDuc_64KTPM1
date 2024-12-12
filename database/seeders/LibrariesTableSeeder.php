@@ -8,15 +8,14 @@ use Faker\Factory as Faker;
 
 class LibrariesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
-        $faker = Faker::create();
-
-        foreach (range(1, 5) as $index) {
+        $faker = Faker::create(); 
+        foreach (range(1, 100) as $index) { 
             DB::table('libraries')->insert([
-                'name' => $faker->company . ' Library',
+                'name' => $faker->name,
                 'address' => $faker->address,
-                'contact_number' => $faker->phoneNumber,
+                'contact_number' => $faker->numerify('0#########'), 
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
