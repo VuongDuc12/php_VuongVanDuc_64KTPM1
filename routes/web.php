@@ -16,6 +16,10 @@ Route::get('/bai1/books/create', [Bai1Controller::class, 'create'])->name('bai1B
 Route::post('/bai1/books/store', [Bai1Controller::class, 'store'])->name('bai1Books.store');
 Route::get('/bai1/books/{id}/edit', [Bai1Controller::class, 'edit'])->name('bai1Books.edit');
 Route::put('/bai1/books/{id}', [Bai1Controller::class, 'update'])->name('bai1Books.update');
+Route::delete('/bai1/books/{id}', [Bai1Controller::class, 'destroy'])->name('bai1Books.destroy');
+
+
+
 Route::get('/bai2', [Bai2Controller::class, 'index'])->name('bai2.index');
 Route::get('/bai3', [Bai3Controller::class, 'index'])->name('bai3.index');
 Route::get('/bai4', [Bai4Controller::class, 'index'])->name('bai4.index');

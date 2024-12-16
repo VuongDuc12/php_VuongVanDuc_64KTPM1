@@ -51,7 +51,7 @@ class Bai1Controller extends Controller
             
         ]);
         book::create($request->all());
-        return redirect()->route('bai1Books.index')->with('success','Đồ án đã được thêm thành công!');
+        return redirect()->route('bai1Books.index')->with('success','Sách đã được thêm thành công!');
     }
 
     /**
@@ -87,7 +87,7 @@ class Bai1Controller extends Controller
         ]);
         $book = Book::find($id);
         $book->update($request->all());
-        return redirect()->route('bai1Books.index')->with('success','Đồ án đã được cập nhật thành công!');
+        return redirect()->route('bai1Books.index')->with('success','Sách đã được cập nhật thành công!');
     }
 
     /**
@@ -95,6 +95,9 @@ class Bai1Controller extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect()->route('bai1Books.index')->with('success', 'Sách đã được xóa thành công!');
     }
 }
