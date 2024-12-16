@@ -12,6 +12,10 @@ Route::get('/bai1', [Bai1Controller::class, 'index'])->name('bai1.index');
 Route::get('/bai1/libraries', [Bai1Controller::class, 'libraries'])->name('bai1Libraries.index');
 
 Route::get('/bai1/books', [Bai1Controller::class, 'books'])->name('bai1Books.index');
+Route::get('/bai1/books/create', [Bai1Controller::class, 'create'])->name('bai1Books.create');
+Route::post('/bai1/books/store', [Bai1Controller::class, 'store'])->name('bai1Books.store');
+    
+
 
 
 

@@ -18,7 +18,7 @@
                     <th>Tác Giả</th>
                     <th>Năm Xuất Bản</th>
                     <th>Thể Loại</th>
-                    <th>ID Thư Viện</th>
+                    <th>Thư Viện</th>
                     <th>Thao Tác</th>
                 </tr>
             </thead>
@@ -30,7 +30,7 @@
                         <td>{{ $book->author }}</td>
                         <td>{{ $book->publication_year }}</td>
                         <td>{{ $book->genre }}</td>
-                        <td>{{ $book->library_id}}</td> <!-- Hiển thị tên thư viện liên kết -->
+                        <td>{{ $book->library->name}}</td> <!-- Hiển thị tên thư viện liên kết -->
                         <td>
                             <a href="" class="btn btn-info">Xem</a>
                             <a href="" class="btn btn-warning">Chỉnh Sửa</a>
@@ -44,9 +44,11 @@
                 @endforeach
             </tbody>
         </table>
-
+        <div class="d-flex justify-content-center">
+				{{ $books->links('pagination::bootstrap-4') }}
+			</div>
         <div class="d-flex justify-content-end">
-            <a href="" class="btn btn-primary">Thêm Sách Mới</a>
+            <a href="{{ route('bai1Books.create') }}" class="btn btn-primary">Thêm Sách Mới</a>
         </div>
     </div>
 @endsection

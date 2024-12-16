@@ -18,7 +18,7 @@ class Bai1Controller extends Controller
     public function books()
     {
        
-        $books = Book::all();
+        $books = Book::with( 'library')->paginate(50);
         return view('bai1.books', compact( 'books'));
     }
     public function libraries()
@@ -33,7 +33,8 @@ class Bai1Controller extends Controller
      */
     public function create()
     {
-        //
+        $libraries = Library::all();
+        return view('bai1.create', compact('libraries'));
     }
 
     /**
@@ -41,7 +42,16 @@ class Bai1Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|max:255',
+            'author' => 'required|max:255',
+            'publication_year' => 'required',
+            'genre' => 'required|max:255',
+            'library_id' => 'required',
+            
+        ]);
+        book::create($request->all());
+        return redirect()->route('bai1Books.index')->with('success','Đồ án đã được thêm thành công!');
     }
 
     /**
