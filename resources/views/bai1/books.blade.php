@@ -33,7 +33,7 @@
                         <td>{{ $book->library->name}}</td> <!-- Hiển thị tên thư viện liên kết -->
                         <td>
                             <a href="" class="btn btn-info">Xem</a>
-                            <a href="" class="btn btn-warning">Chỉnh Sửa</a>
+                            <a href="{{route('bai1Books.edit' , $book->id)}}" class="btn btn-warning">Chỉnh Sửa</a>
                             <form action="" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')

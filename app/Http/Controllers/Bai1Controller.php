@@ -67,7 +67,9 @@ class Bai1Controller extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = Book::findOrFail($id);
+        $libraries = library::all();
+        return view('bai1.edit', compact('libraries' ,'book'));
     }
 
     /**
@@ -75,7 +77,17 @@ class Bai1Controller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'author' => 'required',
+            'publication_year' => 'required',
+            'genre' => 'required',
+            'library_id' => 'required',
+            
+        ]);
+        $book = Book::find($id);
+        $book->update($request->all());
+        return redirect()->route('bai1Books.index')->with('success','Đồ án đã được cập nhật thành công!');
     }
 
     /**
