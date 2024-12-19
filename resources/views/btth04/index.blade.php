@@ -10,7 +10,7 @@
             </div>
         @endif
         <div class="d-flex justify-content-start my-3">
-            <a href="{{ route('bai1Books.create') }}" class="btn btn-primary">Thêm Vấn Đề Mới</a>
+            <a href="{{ route('btth04.create') }}" class="btn btn-primary">Thêm Vấn Đề Mới</a>
         </div>
         <table class="table table-bordered">
             <thead>
@@ -29,7 +29,7 @@
                 @foreach ($issues as $issue)
                     <tr>
                         <td>{{ $issue->id }}</td>
-                        <td>{{ $issue->computer->name }}</td>
+                        <td>{{ $issue->computer->computer_name }}</td>
                         <td>{{ $issue->reported_by }}</td>
                         <td>{{ $issue->reported_date }}</td>
                         <td>{{ $issue->description }}</td>

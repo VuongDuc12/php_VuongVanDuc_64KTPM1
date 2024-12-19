@@ -28,3 +28,10 @@ Route::get('/bai4', [Bai4Controller::class, 'index'])->name('bai4.index');
 
 
 Route::get('/btth04', [Btth04Controller::class, 'index'])->name('btth04.index');
+
+Route::get('/btth04/create', [Btth04Controller::class, 'create'])->name('btth04.create');
+Route::post('/btth04/store', [Btth04Controller::class, 'store'])->name('btth04.store');
+
+
+
+
