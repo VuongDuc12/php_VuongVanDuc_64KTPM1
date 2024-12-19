@@ -37,7 +37,7 @@
                         <td>{{ $issue->status}}</td> <!-- Hiển thị tên thư viện liên kết -->
                         <td>
                             <a href="" class="btn btn-info">Xem</a>
-                            <a href="" class="btn btn-warning">Chỉnh Sửa</a>
+                            <a href="{{route('btth04.edit' , $issue->id )}}" class="btn btn-warning">Chỉnh Sửa</a>
                            
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ $issue->id }}">
                                     Xóa
@@ -54,7 +54,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                                <form action="" method="POST" style="display:inline;">
+                                                <form action="{{route("btth04.destroy" ,$issue->id)}}" method="POST" style="display:inline;">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger">Xóa</button>

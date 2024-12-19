@@ -29,7 +29,7 @@ class Btth04Controller extends Controller
         $validatedData = $request->validate([
             'computer_id' => 'required|exists:computers,id',
             'reported_by' => 'nullable|string|max:50',
-            'reported_date' => 'required|date',
+            'reported_date' => 'required|datetime',
             'description' => 'required|string',
             'urgency' => 'required|in:Low,Medium,High',
             'status' => 'required|in:Open,In Progress,Resolved',
@@ -37,5 +37,32 @@ class Btth04Controller extends Controller
         issue::create($request->all());
         return redirect()->route('btth04.index')->with('success','Vấn đề đã được thêm thành công!');
     }
+    public function edit(string $id)
+    {
+        $issue = issue::findOrFail($id);
+        $computers = computer::all();
+        return view('btth04.edit', compact('issue' ,'computers'));
+    }
 
+    public function update(Request $request, string $id){
+        $validatedData = $request->validate([
+            'computer_id' => 'required|exists:computers,id',
+            'reported_by' => 'nullable|string|max:50',
+            'reported_date' => 'required|date',
+            'description' => 'required|string',
+            'urgency' => 'required|in:Low,Medium,High',
+            'status' => 'required|in:Open,In Progress,Resolved',
+        ]);
+        $issue = issue::find($id);
+        $issue->update($request->all());
+        return redirect()->route('btth04.index')->with('success','Cập nhật vấn đề thành công!');
+    }
+    
+    public function destroy(string $id)
+    {
+        $issue = issue::findOrFail($id);
+        $issue->delete();
+
+        return redirect()->route('btth04.index')->with('success', 'Vấn đề đã được xóa thành công!');
+    }
 }

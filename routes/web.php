@@ -31,7 +31,10 @@ Route::get('/btth04', [Btth04Controller::class, 'index'])->name('btth04.index');
 
 Route::get('/btth04/create', [Btth04Controller::class, 'create'])->name('btth04.create');
 Route::post('/btth04/store', [Btth04Controller::class, 'store'])->name('btth04.store');
+Route::get('/btth04/{id}/edit', [Btth04Controller::class, 'edit'])->name('btth04.edit');
 
 
+Route::put('/btth04/{id}', [Btth04Controller::class, 'update'])->name('btth04.update');
 
+Route::delete('/btth04/{id}', [Btth04Controller::class, 'destroy'])->name('btth04.destroy');
 
