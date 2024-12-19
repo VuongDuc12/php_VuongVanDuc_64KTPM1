@@ -5,6 +5,7 @@ use App\Http\Controllers\Bai1Controller;
 use App\Http\Controllers\Bai2Controller;
 use App\Http\Controllers\Bai3Controller;
 use App\Http\Controllers\Bai4Controller;
+use App\Http\Controllers\Btth04Controller;
 Route::get('/', function () {
     return view('home');
 });
@@ -23,3 +24,7 @@ Route::delete('/bai1/books/{id}', [Bai1Controller::class, 'destroy'])->name('bai
 Route::get('/bai2', [Bai2Controller::class, 'index'])->name('bai2.index');
 Route::get('/bai3', [Bai3Controller::class, 'index'])->name('bai3.index');
 Route::get('/bai4', [Bai4Controller::class, 'index'])->name('bai4.index');
+
+
+
+Route::get('/btth04', [Btth04Controller::class, 'index'])->name('btth04.index');

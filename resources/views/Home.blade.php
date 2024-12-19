@@ -10,6 +10,8 @@
         <a href="{{ route('bai2.index') }}"><button>Bài 2</button></a>
         <a href="{{ route('bai3.index') }}"><button>Bài 3</button></a>
         <a href="{{ route('bai4.index') }}"><button>Bài 4</button></a>
+
+        <a href="{{ route('btth04.index') }}"><button>BTTH04: QL Đồ án sinh viên </button></a>
     </div>
 
 @endsection
