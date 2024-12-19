@@ -9,7 +9,9 @@
                 {{ session('success') }}
             </div>
         @endif
-
+        <div class="d-flex justify-content-start my-3">
+            <a href="{{ route('bai1Books.create') }}" class="btn btn-primary">Thêm Sách Mới</a>
+        </div>
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -67,8 +69,6 @@
         <div class="d-flex justify-content-center">
 				{{ $books->links('pagination::bootstrap-4') }}
 			</div>
-        <div class="d-flex justify-content-end">
-            <a href="{{ route('bai1Books.create') }}" class="btn btn-primary">Thêm Sách Mới</a>
-        </div>
+        
     </div>
 @endsection

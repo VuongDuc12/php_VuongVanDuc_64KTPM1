@@ -18,7 +18,7 @@ class Bai1Controller extends Controller
     public function books()
     {
        
-        $books = Book::with( 'library')->paginate(50);
+        $books = Book::with( 'library')->paginate(10);
         return view('bai1.books', compact( 'books'));
     }
     public function libraries()

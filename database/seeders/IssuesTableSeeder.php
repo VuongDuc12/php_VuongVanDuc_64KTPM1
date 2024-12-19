@@ -15,9 +15,9 @@ class IssuesTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 30) as $index) {
+        foreach (range(1, 60) as $index) {
             DB::table('issues')->insert([
-                'computer_id' => $faker->numberBetween(1, 20), // Giả định có 20 máy tính
+                'computer_id' => $faker->numberBetween(1, 50), // Giả định có 20 máy tính
                 'reported_by' => $faker->name,
                 'reported_date' => $faker->dateTimeBetween('-1 month', 'now'),
                 'description' => $faker->sentence(10),

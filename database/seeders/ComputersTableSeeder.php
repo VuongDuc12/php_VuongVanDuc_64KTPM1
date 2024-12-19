@@ -15,7 +15,7 @@ class ComputersTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1, 20) as $index) {
+        foreach (range(1, 50) as $index) {
             DB::table('computers')->insert([
                 'computer_name' => $faker->unique()->bothify('Lab#-PC##'),
                 'model' => $faker->randomElement(['Dell Optiplex 7090', 'HP EliteDesk 800', 'Lenovo ThinkCentre M720']),
